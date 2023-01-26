@@ -1,0 +1,21 @@
+/** @OnlyCurrentDoc */
+
+function testMacro() {
+  var ss = SpreadsheetApp.getActive()
+  var sheet = ss.getSheetByName('GO');
+  range = sheet.getDataRange()
+  //Range Values
+  var data = range.offset(1, 0, sheet.getLastRow() - 1).getValues();
+
+  var targetSheet  = ss.getSheetByName('historical data GO');
+  targetSheet.getRange(targetSheet.getLastRow()+1, 1, data.length, data[0].length).setValues(data);
+
+  var ss = SpreadsheetApp.getActive()
+  var sheet = ss.getSheetByName('iOS');
+  range = sheet.getDataRange()
+  //Range Values
+  var data = range.offset(1, 0, sheet.getLastRow() - 1).getValues();
+
+  var targetSheet  = ss.getSheetByName('historical data iOS');
+  targetSheet.getRange(targetSheet.getLastRow()+1, 1, data.length, data[0].length).setValues(data);
+};
